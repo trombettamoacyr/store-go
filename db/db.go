@@ -7,7 +7,7 @@ import (
 )
 
 func DbConnection() *sql.DB {
-	connection := "user=postgres dbname=postgres password=Teste123* host=localhost sslmode=disable"
+	connection := "user=postgres dbname=postgres password=Test123* host=localhost sslmode=disable"
 	db, err := sql.Open("postgres", connection)
 
 	if err != nil {
