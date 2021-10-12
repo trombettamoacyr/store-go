@@ -15,8 +15,57 @@
 <nav class="navbar navbar-light bg-light mb-4">
     <a class="navbar-brand" href="/">Golang Store</a>
 </nav>
-<body>
-    <h1>New Products</h1>
+<div class="container">
+
+    <body>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-5">New Product</h1>
+                <p class="lead">insert details:</p>
+            </div>
+        </div>
+        <form method="POST" action="product/insert">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="nome">Name:</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="descricao">Description:</label>
+                        <input type="text" name="description" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="preco">Price:</label>
+                        <input type="number" name="price" class="form-control" step="0.01">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="quantidade">Amount:</label>
+                        <input type="number" name="amount" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" value="save" class="btn btn-success">Save</button>
+            <a class="btn btn-info" href="/">Back</a>
+        </form>
+    </body>
+
+</html>
+</div>
 </body>
+
 </html>
 {{end}}
