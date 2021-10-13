@@ -21,7 +21,7 @@ func Create(product models.Product) {
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println("batataasss")
+
 	query.Exec(name, description, price, amount)
 	defer db.Close()
 }
