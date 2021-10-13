@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   postgres:
-    container_name: postgres_container
+    container_name: postgres_container_store_go
     image: postgres
     environment:
       POSTGRES_PASSWORD: Test123*
