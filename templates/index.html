@@ -29,13 +29,14 @@
                             <th>Amount</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> 
                         {{range .}}
                         <tr>
                             <td>{{.Name}}</td>
                             <td>{{.Description}}</td>
                             <td>{{.Price}}</td>
                             <td>{{.Amount}}</td>
+                            <td><a href="product/delete?id={{.Id}}" class="btn btn-danger">Deletar</a></td>
                         </tr>
                         {{end}}
                     </tbody>

@@ -15,11 +15,11 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "Index", products)
 }
 
-func NewProduct(w http.ResponseWriter, r *http.Request) {
+func New(w http.ResponseWriter, r *http.Request) {
 	templates.ExecuteTemplate(w, "NewProduct", nil)
 }
 
-func SaveProduct(w http.ResponseWriter, r *http.Request) {
+func Save(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 
 		price, _ := strconv.ParseFloat(r.FormValue("price"), 64)
@@ -34,5 +34,14 @@ func SaveProduct(w http.ResponseWriter, r *http.Request) {
 
 		services.Create(product)
 	}
+	http.Redirect(w, r, "/", http.StatusMovedPermanently)
+}
+
+func Delete(w http.ResponseWriter, r *http.Request) {
+
+	productId := r.URL.Query().Get("id")
+
+	services.Delete(productId)
+
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
