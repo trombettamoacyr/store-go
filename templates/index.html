@@ -24,6 +24,7 @@
                             <td>{{.Description}}</td>
                             <td>{{.Price}}</td>
                             <td>{{.Amount}}</td>
+                            <td><a href="/product/edit?id={{.Id}}" class="btn btn-info">Edit</button></td>
                             <td><button onclick="onDelete('{{.Id}}')" class="btn btn-danger">Remove</button></td>
                         </tr>
                         {{end}}
@@ -41,7 +42,7 @@
     function onDelete(id) {
         const resp = confirm("Remove item?")
         if (resp) {
-            window.location = "product/delete?id=" + id
+            window.location = "/product/delete?id=" + id
         }
     }
 </script>

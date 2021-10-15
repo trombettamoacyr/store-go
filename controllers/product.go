@@ -4,14 +4,14 @@ import (
 	"html/template"
 	"net/http"
 	"store-go/models"
-	"store-go/services"
+	"store-go/services/product"
 	"strconv"
 )
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	products := models.FindAllProducts()
+	products := product.FindAll()
 	templates.ExecuteTemplate(w, "Index", products)
 }
 
@@ -25,23 +25,46 @@ func Save(w http.ResponseWriter, r *http.Request) {
 		price, _ := strconv.ParseFloat(r.FormValue("price"), 64)
 		amount, _ := strconv.Atoi(r.FormValue("amount"))
 
-		product := models.Product{
+		newProduct := models.Product{
 			Name:        r.FormValue("name"),
 			Description: r.FormValue("description"),
 			Price:       price,
 			Amount:      amount,
 		}
 
-		services.Create(product)
+		product.Create(newProduct)
 	}
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
-
 	productId := r.URL.Query().Get("id")
 
-	services.Delete(productId)
+	product.Delete(productId)
 
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
+}
+
+func Edit(w http.ResponseWriter, r *http.Request) {
+	productId := r.URL.Query().Get("id")
+	currentProduct := product.Find(productId)
+	templates.ExecuteTemplate(w, "Edit", currentProduct)
+}
+
+func Update(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodPost {
+		id, _ := strconv.Atoi(r.FormValue("id"))
+		price, _ := strconv.ParseFloat(r.FormValue("price"), 64)
+		amount, _ := strconv.Atoi(r.FormValue("amount"))
+
+		newProduct := models.Product{
+			Id:          id,
+			Name:        r.FormValue("name"),
+			Description: r.FormValue("description"),
+			Price:       price,
+			Amount:      amount,
+		}
+		product.Edit(newProduct)
+		http.Redirect(w, r, "/", http.StatusMovedPermanently)
+	}
 }

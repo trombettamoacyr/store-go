@@ -1,4 +1,4 @@
-{{define "NewProduct"}}
+{{define "Edit"}}
 
 {{template "_head"}}
 
@@ -9,32 +9,33 @@
     <body>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-5">New Product</h1>
-                <p class="lead">insert details:</p>
+                <h1 class="display-5">Edit Product</h1>
+                <p class="lead">insert infos:</p>
             </div>
         </div>
-        <form method="POST" action="/product/insert">
+        <form method="POST" action="/product/update">
+            <input type ="hidden" name="id" value="{{.Id}}"> 
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="nome">Name:</label>
-                        <input type="text" name="name" class="form-control">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" class="form-control" value="{{.Name}}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="descricao">Description:</label>
-                        <input type="text" name="description" class="form-control">
+                        <label for="description">Description:</label>
+                        <input type="text" name="description" class="form-control" value="{{.Description}}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="preco">Price:</label>
-                        <input type="number" name="price" class="form-control" step="0.01">
+                        <label for="price">Price:</label>
+                        <input type="number" name="price" class="form-control" step="0.01" value="{{.Price}}">
                     </div>
                 </div>
             </div>
@@ -42,8 +43,8 @@
             <div class="row">
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="quantidade">Amount:</label>
-                        <input type="number" name="amount" class="form-control">
+                        <label for="amount">Amount:</label>
+                        <input type="number" name="amount" class="form-control" value="{{.Amount}}">
                     </div>
                 </div>
             </div>
