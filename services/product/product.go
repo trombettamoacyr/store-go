@@ -1,8 +1,9 @@
 package product
 
 import (
-	"store-go/db"
-	"store-go/models"
+	"fmt"
+	"github.com/trombettamoacyr/store-go/db"
+	"github.com/trombettamoacyr/store-go/models"
 )
 
 func Find(productId string) models.Product {
@@ -73,7 +74,9 @@ func Create(product models.Product) {
 
 	checkErro(err)
 
-	query.Exec(name, description, price, amount)
+	res, err := query.Exec(name, description, price, amount)
+	fmt.Println(res.RowsAffected())
+
 	defer db.Close()
 }
 

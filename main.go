@@ -2,7 +2,8 @@ package main
 
 import (
 	"net/http"
-	"store-go/routes"
+
+	"github.com/trombettamoacyr/store-go/routes"
 )
 
 func main() {

@@ -1,11 +1,13 @@
 package controllers
 
 import (
+	"github.com/trombettamoacyr/store-go/db"
 	"html/template"
 	"net/http"
-	"store-go/models"
-	"store-go/services/product"
 	"strconv"
+
+	"github.com/trombettamoacyr/store-go/models"
+	"github.com/trombettamoacyr/store-go/services/product"
 )
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
@@ -67,4 +69,10 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		product.Edit(newProduct)
 		http.Redirect(w, r, "/", http.StatusMovedPermanently)
 	}
+}
+
+func Migration(w http.ResponseWriter, r *http.Request) {
+	db.Migration()
+	products := product.FindAll()
+	templates.ExecuteTemplate(w, "Index", products)
 }

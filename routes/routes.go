@@ -2,7 +2,8 @@ package routes
 
 import (
 	"net/http"
-	"store-go/controllers"
+
+	"github.com/trombettamoacyr/store-go/controllers"
 )
 
 func Routes() {
@@ -12,4 +13,6 @@ func Routes() {
 	http.HandleFunc("/product/delete", controllers.Delete)
 	http.HandleFunc("/product/edit", controllers.Edit)
 	http.HandleFunc("/product/update", controllers.Update)
+
+	http.HandleFunc("/migration", controllers.Migration)
 }
