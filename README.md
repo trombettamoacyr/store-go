@@ -15,9 +15,13 @@ go build
 ``` 
 make docker-start
 ``` 
-Stop container
+### Stop container
 ``` 
 make docker-stop
+``` 
+### Delete container
+``` 
+make docker-clean
 ``` 
 
 ### Run application
