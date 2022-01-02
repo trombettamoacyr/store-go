@@ -2,7 +2,7 @@
 
 This golang mvn application is a simple store with the actions add, alter and delete product.
 
-### Dependencie:
+### Dependency:
 
 - [Postgres](github.com/lib/pq) - Postgres driver
 
